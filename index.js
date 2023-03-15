@@ -27,9 +27,9 @@ async function dbOperation() {
 
     try {
         const student = await Student.create({
-            name: "Mohor",
+            name: "Babai",
             age: 24,
-            email: "saptatirtha@gmail.com",
+            email: "babai@gmail.com",
             address: {
                 lane1: "l1",
                 lane2: "l2",
