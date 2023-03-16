@@ -9,12 +9,18 @@ const mongoose = require("mongoose")
 /**
  * Try making a connection to the mongoDB
  */
+async function connectMongoDB() {
 
-mongoose.connect('mongodb://127.0.0.1:27017/mongooseDemo', { useNewUrlParser: true }).then((result) => {
-    console.log("Connected to Database");
-}).catch((err) => {
-    console.log("Not Connected to Database ERROR! ", err);
-});
+    try {
+        const connectDB = await mongoose.connect('mongodb://127.0.0.1:27017/mongooseDemo', { useNewUrlParser: true })
+        console.log("Connected to MongoDB database ! ", connectDB);
+    } catch (err) {
+        console.log("Failed to connect MongoDB database ! ", err);
+    }
+
+}
+
+connectMongoDB();
 
 
 const Student = require("./student.model")
@@ -79,7 +85,7 @@ async function dbOperation() {
          * Using the where clause
          */
         const studs = await Student.where("age").gt("10")
-        console.log(studs);
+      //  console.log(studs);
 
 
     } catch (err) {
