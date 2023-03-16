@@ -26,20 +26,62 @@ const Student = require("./student.model")
 async function dbOperation() {
 
     try {
-        const student = await Student.create({
-            name: "Babai",
-            age: 24,
-            email: "babai@gmail.com",
-            address: {
-                lane1: "l1",
-                lane2: "l2",
-                street: "Bellandur",
-                city: "Bangalore",
-                country: "India",
-                pincode: 560103
-            }
-        });
-        console.log(student);
+        // await Student.collection.drop(); // Delete existing collection //
+        //     const student = await Student.create({
+        //         name: "Sapta",
+        //         age: 24,
+        //         email: "sapta@gmail.com",
+        //         subjects: [""],
+        //         address: {
+        //             lane1: "l1",
+        //             lane2: "l2",
+        //             street: "Bellandur",
+        //             city: "Bangalore",
+        //             country: "India",
+        //             pincode: 560103
+        //         }
+        //     });
+        //    console.log(student);
+        // const student1 = await Student.create({
+        //     name: "Mohor",
+        //     age: 24,
+        //     email: "mohor@gmail.com",
+        //     subjects: [""],
+        //     address: {
+        //         lane1: "l4",
+        //         lane2: "l12",
+        //         street: "BiryaniRoad",
+        //         city: "Hyderabad",
+        //         country: "India",
+        //         pincode: 673456
+        //     }
+        // });
+        // console.log(student + "  " + student1);
+
+        /**
+         * Using mongoose I want to search a record/document based on id
+         */
+        // const stu = await Student.findById("6412eeebee1b0ff12dbd0cb4")
+        // console.log(stu);
+
+        // const name = await Student.find({ name: "Bubai" })
+        // console.log(name);
+
+        //__________________________________________________________________
+        /**
+         * Now I want to delete the document
+         */
+        // const stud = await Student.deleteOne({ name: "Babai" });
+        // console.log(stud)
+
+        //__________________________________________________________
+        /**
+         * Using the where clause
+         */
+        const studs = await Student.where("age").gt("10")
+        console.log(studs);
+
+
     } catch (err) {
         console.log(err);
     }
